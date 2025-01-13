@@ -1,10 +1,14 @@
+local status, avante_provider = pcall(vim.api.nvim_get_var, "avante_provider")
+if not status then
+  avante_provider = "copilot"
+end
 return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
     opts = {
-      provider = "copilot",
+      provider = avante_provider,
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
